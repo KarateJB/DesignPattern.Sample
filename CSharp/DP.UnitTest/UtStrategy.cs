@@ -1,19 +1,29 @@
 using System;
+using System.Diagnostics;
 using DP.Domain.Samples.Strategy;
+using DP.UnitTest.Utility;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace DP.UnitTest
 {
     public class UtStrategy
     {
-        [Fact]
+        private readonly ITestOutputHelper output;
+
+        public UtStrategy(ITestOutputHelper output)
+        {
+            this.output = output;
+            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output)); 
+        }
+
+        [Fact] 
         public void TestTextLogger()
         {
             ILogger logger = new TextLogger();
-            //logger.Debug(msg);
-            //logger.Warn(msg);
-            //logger.Error(msg);
             (new MyTask(logger)).Run();
+
+            // this.output.WriteLine("Finished!!");
 
             Assert.True(true);
         }
