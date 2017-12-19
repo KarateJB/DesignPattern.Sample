@@ -11,6 +11,8 @@ namespace DP.Domain.Samples.Strategy
         {
             if (logger != null)
                 this._logger = logger;
+            else
+                throw new ArgumentNullException("logger");
         }
 
         public void Run()

@@ -22,9 +22,6 @@ namespace DP.UnitTest
         {
             ILogger logger = new TextLogger();
             (new MyTask(logger)).Run();
-
-            // this.output.WriteLine("Finished!!");
-
             Assert.True(true);
         }
     }
