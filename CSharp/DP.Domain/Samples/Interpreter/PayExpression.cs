@@ -12,7 +12,8 @@ namespace DP.Domain.Samples.Interpreter
             var pay = new PayData();
             pay.Customer = context.Value.Substring(38, 20).Trim();
             pay.PayAmout = Decimal.Parse(context.Value.Substring(58, 8).Trim());
-            pay.PayOn = DateTime.Parse(context.Value.Substring(64, 19));
+            var tmp = context.Value.Substring(66, 19);
+            pay.PayOn = DateTime.Parse(context.Value.Substring(66, 19));
             
 
             #region Call Terminal Expressions in Nonterminal Expression
