@@ -30,11 +30,11 @@ namespace DP.UnitTest
             decimal payAmt = 120;
             DateTime payOn = DateTime.Now;
 
-            string edi = 
-               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8},{6, 19}", 
-                               storeId, storeName, vipCardNo, vipBonusPoints,custName, payAmt, payOn.ToString("yyyyMMdd HH:mm:ss") );
+            string ediExpected = 
+               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}", 
+                               storeId, storeName, vipCardNo, vipBonusPoints,custName, payAmt, payOn.ToString("yyyy-MM-dd HH:mm:ss") );
 
-            var context = new Context(edi);
+            var context = new Context(ediExpected);
             var pay = new PayData();
 
             var payExp = new PayExpression();
@@ -46,9 +46,15 @@ namespace DP.UnitTest
             var vipExp = new VipExpression();
             pay.Vip = (vipExp.Interpret(context)).Vip;
 
-       
-          
-            Assert.True(true);
+
+            //Validate
+            string ediActual = 
+               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}", 
+                               pay.Store.Id, pay.Store.Name, 
+                               pay.Vip.CardNo, 
+                               pay.Vip.BonusPoints.ToString(), 
+                               pay.Customer, pay.PayAmout.ToString(), pay.PayOn.ToString("yyyy-MM-dd HH:mm:ss") );
+            Assert.Equal(ediExpected, ediActual);
         }
     }
 }
