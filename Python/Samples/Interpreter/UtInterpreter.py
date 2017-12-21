@@ -17,11 +17,11 @@ class UtInterpreter(unittest.TestCase):
         custName = "Darth Vader"
         payAmt = 120
         payOn = datetime.now()
-
+ 
         ediExpected = '{0: <4}{1: <20}{2: <6}{3: <8}{4: <20}{5: <8}{6: <19}'.format(
             storeId, storeName, vipCardNo, vipBonusPoints, custName, payAmt,
             payOn.strftime("%Y-%m-%d %H:%M:%S"))
-
+        
         context = Context(ediExpected)
         pay = PayData()
         pay = PayExpression().interpret(context)
@@ -33,9 +33,8 @@ class UtInterpreter(unittest.TestCase):
             pay.store.id, pay.store.name,
             pay.vip.cardNo,
             pay.vip.bonusPoints,
-            pay.customer, pay.payAmout,
+            pay.customer, pay.payAmt,
             pay.payOn.strftime("%Y-%m-%d %H:%M:%S"))
-
         self.assertEqual(ediActual, ediExpected)
 
 
