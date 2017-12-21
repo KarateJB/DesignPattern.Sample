@@ -18,27 +18,26 @@ class UtInterpreter(unittest.TestCase):
         payAmt = 120
         payOn = datetime.now()
 
-        ediExpected = "{0: <4}{1: <20}{2: <6}{3: <8}{4: <20}{5: <8}{6: <19}".format(
-                               storeId, storeName, vipCardNo, vipBonusPoints, custName, payAmt,
-                               payOn.strftime("%Y-%m-%d %H:%M:%S"))
+        ediExpected = '{0: <4}{1: <20}{2: <6}{3: <8}{4: <20}{5: <8}{6: <19}'.format(
+            storeId, storeName, vipCardNo, vipBonusPoints, custName, payAmt,
+            payOn.strftime("%Y-%m-%d %H:%M:%S"))
 
-       context = Context(ediExpected)
-       pay = PayData()
-       pay = PayExpression().interpret(context)
-       pay.store = (StoreExpression().interpret(context)).store
-       pay.vip = (VipExpression().interpret(context)).vip
-
+        context = Context(ediExpected)
+        pay = PayData()
+        pay = PayExpression().interpret(context)
+        pay.store = (StoreExpression().interpret(context)).store
+        pay.vip = (VipExpression().interpret(context)).vip
 
         # Validate
         ediActual = "{0: <4}{1: <20}{2: <6}{3: <8}{4: <20}{5: <8}{6: <19}".format(
-                            pay.store.id, pay.store.name, 
-                            pay.vip.cardNo, 
-                            pay.vip.bonusPoints, 
-                            pay.customer, pay.payAmout, 
-                            pay.payOn.strftime("%Y-%m-%d %H:%M:%S") )
+            pay.store.id, pay.store.name,
+            pay.vip.cardNo,
+            pay.vip.bonusPoints,
+            pay.customer, pay.payAmout,
+            pay.payOn.strftime("%Y-%m-%d %H:%M:%S"))
 
         self.assertEqual(ediActual, ediExpected)
 
-    
+
 if __name__ == '__main__':
     unittest.main()

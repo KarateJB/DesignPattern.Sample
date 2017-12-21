@@ -1,8 +1,8 @@
 from decimal import Decimal 
-from models import PayData, Vip, Store, Context
+from Models import PayData, Vip, Store, Context
 from Expression import Expression
 
-class StoreExpression(Expression):
+class VipExpression(Expression):
      def interpret(self,context=Context):
          pay= PayData()
          pay.vip.cardNo = context.value[24,6].strip()
