@@ -5,11 +5,14 @@ namespace DP.Domain.Samples.Interpreter
     /// </summary>
     public class Context
     {
-        public string Value { get; set; }
+        public string Input { get; set; }
+
+        public PayData Output { get; set; }
 
         public Context(string value)
         {
-            this.Value = value;
+            this.Input = value;
+            this.Output = new PayData();
         }
     }
 }

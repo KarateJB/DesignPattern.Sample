@@ -11,7 +11,6 @@ namespace DP.Domain.Samples.Interpreter
         /// Interprete context object to Customer object
         /// </summary>
         /// <param name="context">Context object</param>
-        /// <returns>PayData object</returns>
-         PayData Interpret(Context context);
+         void Interpret(Context context);
     }
 }

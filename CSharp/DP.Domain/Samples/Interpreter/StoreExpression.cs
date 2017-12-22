@@ -5,12 +5,10 @@ namespace DP.Domain.Samples.Interpreter
     /// </summary>
     public class StoreExpression : IExpression
     {
-        public PayData Interpret(Context context)
+        public void Interpret(Context context)
         {
-            var pay = new PayData();
-            pay.Store.Id = context.Value.Substring(0, 4).Trim();
-            pay.Store.Name = context.Value.Substring(4, 20).Trim();
-            return pay;
+            context.Output.Store.Id = context.Input.Substring(0, 4).Trim();
+            context.Output.Store.Name = context.Input.Substring(4, 20).Trim();
         }
     }
 }

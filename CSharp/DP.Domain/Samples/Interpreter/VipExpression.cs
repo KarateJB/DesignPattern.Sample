@@ -5,12 +5,10 @@ namespace DP.Domain.Samples.Interpreter
     /// </summary>
     public class VipExpression : IExpression
     {
-        public PayData Interpret(Context context)
+        public void Interpret(Context context)
         {
-            var pay = new PayData();
-            pay.Vip.CardNo = context.Value.Substring(24, 6).Trim();
-            pay.Vip.BonusPoints = int.Parse(context.Value.Substring(30, 8).Trim());
-            return pay;
+            context.Output.Vip.CardNo = context.Input.Substring(24, 6).Trim();
+            context.Output.Vip.BonusPoints = int.Parse(context.Input.Substring(30, 8).Trim());
         }
     }
 }

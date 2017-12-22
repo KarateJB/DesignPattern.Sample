@@ -4,7 +4,5 @@ from Expression import Expression
 
 class VipExpression(Expression):
      def interpret(self,context=Context):
-         pay= PayData()
-         pay.vip.cardNo = context.value[24:30].strip()
-         pay.vip.bonusPoints = context.value[30:38].strip()
-         return pay
+         context.output.vip.cardNo = context.input[24:30].strip()
+         context.output.vip.bonusPoints = context.input[30:38].strip()

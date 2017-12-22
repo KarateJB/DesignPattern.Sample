@@ -16,10 +16,10 @@ namespace DP.UnitTest
         public UtInterpreter(ITestOutputHelper output)
         {
             this.output = output;
-            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output)); 
+            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output));
         }
 
-        [Fact] 
+        [Fact]
         public void TestExpression()
         {
             string storeId = "0001";
@@ -30,30 +30,30 @@ namespace DP.UnitTest
             decimal payAmt = 120;
             DateTime payOn = DateTime.Now;
 
-            string ediExpected = 
-               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}", 
-                               storeId, storeName, vipCardNo, vipBonusPoints,custName, payAmt, payOn.ToString("yyyy-MM-dd HH:mm:ss") );
+            string ediExpected =
+               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}",
+                               storeId, storeName, vipCardNo, vipBonusPoints, custName, payAmt, payOn.ToString("yyyy-MM-dd HH:mm:ss"));
 
             var context = new Context(ediExpected);
-            var pay = new PayData();
 
-            var payExp = new PayExpression();
-            pay = payExp.Interpret(context);
+            var expressions = new List<IExpression>(){
+                new PayExpression(),
+                new VipExpression(),
+                new StoreExpression()
+            };
 
-            var storeExp = new StoreExpression();
-            pay.Store = (storeExp.Interpret(context)).Store;
-
-            var vipExp = new VipExpression();
-            pay.Vip = (vipExp.Interpret(context)).Vip;
-
+            expressions.ForEach(exp=>{
+                exp.Interpret(context);
+            });
 
             //Validate
-            string ediActual = 
-               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}", 
-                               pay.Store.Id, pay.Store.Name, 
-                               pay.Vip.CardNo, 
-                               pay.Vip.BonusPoints.ToString(), 
-                               pay.Customer, pay.PayAmout.ToString(), pay.PayOn.ToString("yyyy-MM-dd HH:mm:ss") );
+            var output = context.Output;
+            string ediActual =
+               String.Format("{0,-4}{1,-20}{2,-6}{3,8}{4,-20}{5,8}{6, 19}",
+                               output.Store.Id, output.Store.Name,
+                               output.Vip.CardNo,
+                               output.Vip.BonusPoints.ToString(),
+                               output.Customer, output.PayAmout.ToString(), output.PayOn.ToString("yyyy-MM-dd HH:mm:ss"));
             Assert.Equal(ediExpected, ediActual);
         }
     }

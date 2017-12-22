@@ -23,18 +23,21 @@ class UtInterpreter(unittest.TestCase):
             payOn.strftime("%Y-%m-%d %H:%M:%S"))
         
         context = Context(ediExpected)
-        pay = PayData()
-        pay = PayExpression().interpret(context)
-        pay.store = (StoreExpression().interpret(context)).store
-        pay.vip = (VipExpression().interpret(context)).vip
+
+        expressions = [PayExpression(),VipExpression(), StoreExpression()]
+        for exp in expressions:
+            exp.interpret(context)
 
         # Validate
+        output=context.output
         ediActual = "{0: <4}{1: <20}{2: <6}{3: <8}{4: <20}{5: <8}{6: <19}".format(
-            pay.store.id, pay.store.name,
-            pay.vip.cardNo,
-            pay.vip.bonusPoints,
-            pay.customer, pay.payAmt,
-            pay.payOn.strftime("%Y-%m-%d %H:%M:%S"))
+            output.store.id, output.store.name,
+            output.vip.cardNo,
+            output.vip.bonusPoints,
+            output.customer, output.payAmt,
+            output.payOn.strftime("%Y-%m-%d %H:%M:%S"))
+        print(ediExpected)
+        print(ediActual)
         self.assertEqual(ediActual, ediExpected)
 
 

@@ -5,7 +5,5 @@ from Expression import Expression
 
 class StoreExpression(Expression):
      def interpret(self,context=Context):
-         pay= PayData()
-         pay.store.id = context.value[0:4].strip()
-         pay.store.name = context.value[4:24].strip()
-         return pay
+         context.output.store.id = context.input[0:4].strip()
+         context.output.store.name = context.input[4:24].strip()

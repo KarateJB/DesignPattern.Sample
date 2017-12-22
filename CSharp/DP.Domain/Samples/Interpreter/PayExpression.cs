@@ -7,24 +7,11 @@ namespace DP.Domain.Samples.Interpreter
     /// </summary>
     public class PayExpression : IExpression
     {
-        public PayData Interpret(Context context)
+        public void Interpret(Context context)
         {
-            var pay = new PayData();
-            pay.Customer = context.Value.Substring(38, 20).Trim();
-            pay.PayAmout = Decimal.Parse(context.Value.Substring(58, 8).Trim());
-            var tmp = context.Value.Substring(66, 19);
-            pay.PayOn = DateTime.Parse(context.Value.Substring(66, 19));
-            
-
-            #region Call Terminal Expressions in Nonterminal Expression
-            // var storeExp = new StoreExpression();
-            // pay.Store = (storeExp.Interpret(context)).Store;
-
-            // var vipExp = new VipExpression();
-            // pay.Vip = (vipExp.Interpret(context)).Vip;
-            #endregion
-
-            return pay;
+            context.Output.Customer = context.Input.Substring(38, 20).Trim();
+            context.Output.PayAmout = Decimal.Parse(context.Input.Substring(58, 8).Trim());
+            context.Output.PayOn = DateTime.Parse(context.Input.Substring(66, 19));
         }
     }
 }

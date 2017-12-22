@@ -26,8 +26,9 @@ class PayData:
 
 
 class Context:
-    def __init__(self, value):
-       if value is None:
+    def __init__(self, input):
+       if input is None:
             raise TypeError
        else:     
-            self.value=value
+            self.input=input
+            self.output=PayData() 
