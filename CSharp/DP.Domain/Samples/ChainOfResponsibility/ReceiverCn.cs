@@ -1,4 +1,4 @@
-namespace DP.Domain.Samples.ChainOfResposibility
+namespace DP.Domain.Samples.ChainOfResponsibility
 {
     public class ReceiverCn : IHandler
     {
@@ -12,11 +12,11 @@ namespace DP.Domain.Samples.ChainOfResposibility
                     Country=DataFactory.CountryCn,
                     City=DataFactory.CityCn
                 };
-                System.Diagnostics.Debug.WriteLine($"{content.Country} {content.City}");
+                System.Diagnostics.Trace.WriteLine($"{content.Country} {content.City}");
                 return content;
             }
             else
-                System.Diagnostics.Debug.WriteLine($"Not zh-CN, go to next receiver...");
+                System.Diagnostics.Trace.WriteLine($"Not zh-CN, go to next receiver...");
             
             #region Do next
             if (this.Next == null) //Set a default next receiver

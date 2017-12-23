@@ -1,22 +1,22 @@
-namespace DP.Domain.Samples.ChainOfResposibility
+namespace DP.Domain.Samples.ChainOfResponsibility
 {
-    public class ReceiverEn : IHandler
+    public class ReceiverZh : IHandler
     {
         public IHandler Next { get; set; }
 
         public Content Action(string localization)
         {
-            if (localization.Equals("en-US"))
+            if (localization.Equals("zh-TW"))
             {
                 var content =  new Content{
-                    Country=DataFactory.CountryEn,
-                    City=DataFactory.CityEn
+                    Country=DataFactory.CountryZh,
+                    City=DataFactory.CityZh
                 };
-                System.Diagnostics.Debug.WriteLine($"{content.Country} {content.City}");
+                System.Diagnostics.Trace.WriteLine($"{content.Country} {content.City}");
                 return content;
             }
             else
-                System.Diagnostics.Debug.WriteLine($"Not en-US, go to next receiver...");
+                System.Diagnostics.Trace.WriteLine($"Not zh-TW, go to next receiver...");
             
             #region Do next
             if (this.Next == null) //Set a default next receiver

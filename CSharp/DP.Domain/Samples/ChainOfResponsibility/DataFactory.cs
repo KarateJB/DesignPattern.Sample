@@ -1,4 +1,4 @@
-namespace DP.Domain.Samples.ChainOfResposibility
+namespace DP.Domain.Samples.ChainOfResponsibility
 {
     public static class DataFactory
     {
