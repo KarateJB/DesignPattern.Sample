@@ -11,7 +11,7 @@ class HandlerBase(ABC):
     @next.setter
     @abstractmethod
     def next(self, val):
-        self._next = val
+        pass
 
     @abstractmethod
     def action(self, localization):
