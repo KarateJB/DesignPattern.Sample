@@ -15,8 +15,8 @@ namespace DP.Domain.Samples.Facade
 
         public void Read()
         {
-             System.Diagnostics.Trace.WriteLine($"(Database)Loading logs.");
-             System.Diagnostics.Trace.WriteLine($"(Text)Loading logs.");
+             System.Diagnostics.Trace.WriteLine($"(Database)Dump logs.");
+             System.Diagnostics.Trace.WriteLine($"(Text)Dump logs.");
         }
     }
 }
