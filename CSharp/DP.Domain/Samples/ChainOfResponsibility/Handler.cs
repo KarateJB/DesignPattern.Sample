@@ -2,9 +2,9 @@ namespace DP.Domain.Samples.ChainOfResponsibility
 {
     public class Handler : IHandler
     {
-        public IHandler Next { get; set; }
+        public virtual IHandler Next { get; set; }
 
-        public Content Action(string localization)
+        public virtual Content Action(string localization)
         {
             #region Do next
             if (this.Next == null) //Set a default next receiver

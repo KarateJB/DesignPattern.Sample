@@ -54,7 +54,7 @@ namespace DP.UnitTest
         [Fact] 
         public void TestHandlerCustom()
         {
-            string localization="zh-CN";
+            string localization="zh-TW";
 
             var handlerEn = new ReceiverEn();
             var handlerZh = new ReceiverZh();
