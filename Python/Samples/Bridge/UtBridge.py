@@ -1,6 +1,8 @@
 import unittest
 from Printers import PrinterUsual, PrinterEmergency
 from Orders import FatbookOrder, GoopleOrder
+from PrintStgs import * 
+from PrinterCustom import PrinterCustom
 
 
 class UtBridge(unittest.TestCase):
@@ -17,6 +19,15 @@ class UtBridge(unittest.TestCase):
         # 列印第二家廠商:產品B的訂單=>但該廠商並無產品B
         order3 = GoopleOrder(PrinterUsual())
         order3.printOrderB()
+
+        self.assertTrue(True)
+
+
+    def test_bridgeNstrategy(self):
+        stg = FatbookPrintStg();
+        order = FatbookOrder(PrinterCustom(stg))
+        order.printOrderA();
+        order.printOrderB()
 
         self.assertTrue(True)
 
