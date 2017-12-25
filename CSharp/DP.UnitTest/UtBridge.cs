@@ -19,20 +19,7 @@ namespace DP.UnitTest
             System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output));
         }
 
-        [Fact]
-        public void TestStrategy()
-        {
-            #region 列印第一家廠商:產品B的訂單
-            IPrinter prtUsual = new PrinterUsual();
-            prtUsual.OrderB();
-            #endregion
-
-            #region 列印第二家廠商:產品A的急單
-            IPrinter prtEmg = new PrinterEmergency();
-            prtEmg.OrderA();
-            #endregion
-        }
-
+       
         [Fact]
         public void TestBridge()
         {
@@ -50,6 +37,16 @@ namespace DP.UnitTest
             IOrder order3 = new GoopleOrder(new PrinterUsual());
             order2.PrintOrderB();
             #endregion
+        }
+
+        [Fact]
+        public void TestBridgeWithStrategy()
+        {
+            var stg = new FatbookPrintStg();
+            IOrder order = new FatbookOrder(new PrinterCostom(stg));
+            order.PrintOrderA();
+            order.PrintOrderB();
+
         }
     }
 }
