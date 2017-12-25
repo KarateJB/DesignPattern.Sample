@@ -35,7 +35,7 @@ namespace DP.UnitTest
 
             #region 列印第二家廠商:產品B的訂單=>但該廠商並無產品B
             IOrder order3 = new GoopleOrder(new PrinterUsual());
-            order2.PrintOrderB();
+            order3.PrintOrderB();
             #endregion
         }
 
