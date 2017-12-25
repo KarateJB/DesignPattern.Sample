@@ -26,7 +26,7 @@ class UtBridge(unittest.TestCase):
     def test_bridgeNstrategy(self):
         stg = FatbookPrintStg();
         order = FatbookOrder(PrinterCustom(stg))
-        order.printOrderA();
+        order.printOrderA()
         order.printOrderB()
 
         self.assertTrue(True)
