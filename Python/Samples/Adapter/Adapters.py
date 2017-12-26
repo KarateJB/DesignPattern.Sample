@@ -7,7 +7,8 @@ class AdapterCls(Adaptee):
     def interpret(self, context=Context):
         if(len(context.input)>85):
                 context.input = context.input[0:85]
-        self.interpret(context)
+
+        super().interpret(context)
 
 
 class  AdapterObj():

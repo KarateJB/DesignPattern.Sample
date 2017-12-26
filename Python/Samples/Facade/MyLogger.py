@@ -1,5 +1,6 @@
 import sys
-sys.path.append("../Strategy/")
+import os.path
+sys.path.append(os.path.join(os.path.dirname(__file__), '../Strategy/'))
 from DbLogger import DbLogger
 from TextLogger import TextLogger
 

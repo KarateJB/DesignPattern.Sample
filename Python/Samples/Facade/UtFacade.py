@@ -1,7 +1,6 @@
 import unittest
 from MyLogger import MyLogger
 
-
 class UtFacade(unittest.TestCase):
 
     def test_facade(self):
