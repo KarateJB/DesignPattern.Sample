@@ -3,6 +3,9 @@ sys.path.append("../Interpreter/")
 from Models import Context
 from Adaptee import Adaptee
 
+
+"""Class way
+"""
 class AdapterCls(Adaptee):
     def interpret(self, context=Context):
         if(len(context.input)>85):
@@ -10,7 +13,8 @@ class AdapterCls(Adaptee):
 
         super().interpret(context)
 
-
+"""Object way
+"""
 class  AdapterObj():
     _adaptee = None
 

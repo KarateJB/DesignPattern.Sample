@@ -2,6 +2,9 @@ using DP.Domain.Samples.Interpreter;
 
 namespace DP.Domain.Samples.Adapter
 {
+    /// <summary>
+    /// Object way
+    /// </summary>
     public class AdapterObj
     {
         private Adapee _adapee = null;
