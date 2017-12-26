@@ -10,12 +10,12 @@ namespace DP.UnitTest
 {
     public class UtChainOfResponsibility
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper _output;
 
         public UtChainOfResponsibility(ITestOutputHelper output)
         {
-            this.output = output;
-            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output)); 
+            this._output = output;
+            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this._output)); 
         }
 
         [Fact] 

@@ -11,12 +11,12 @@ namespace DP.UnitTest
 {
     public class UtBridge
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper _output;
 
         public UtBridge(ITestOutputHelper output)
         {
-            this.output = output;
-            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this.output));
+            this._output = output;
+            System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this._output));
         }
 
        
