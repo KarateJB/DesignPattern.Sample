@@ -5,8 +5,6 @@ using DP.Domain.Samples.Facade;
 using DP.UnitTest.Utility;
 using Xunit;
 using Xunit.Abstractions;
-using DP.Domain.Samples.Bridge;
-using DP.Domain.Samples.Factory;
 using DP.Domain.Samples.Prototype;
 
 namespace DP.UnitTest
