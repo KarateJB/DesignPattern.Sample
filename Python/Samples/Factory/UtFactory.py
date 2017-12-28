@@ -15,12 +15,12 @@ class UtFactory(unittest.TestCase):
         olDbcontext.connect()
         self.assertEqual(olDbcontext.server, DbEnum.Online.name)
 
-    # def test_abstract_factory(self):
+    def test_abstract_factory(self):
 
-    #     dmFactory = DataMartDbFactory()
-    #     dmDbcontext =  dmFactory.create()
-    #     dmDbcontext.connect();
-    #     self.assertEqual(dmDbcontext.server, DbEnum.DataMart.name)
+        dmFactory = DataMartDbFactory()
+        dmDbcontext =  dmFactory.create()
+        dmDbcontext.connect();
+        self.assertEqual(dmDbcontext.server, DbEnum.DataMart.name)
 
 
 if __name__ == '__main__':
