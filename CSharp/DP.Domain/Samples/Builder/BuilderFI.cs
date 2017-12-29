@@ -7,7 +7,8 @@ namespace DP.Domain.Samples.Builder
         public IMainData Init()
         {
             Trace.WriteLine("Initializing from BuilderFI!");
-            return new MainData();
+            var main = new MainData(){ TargetBU="Financial Department" };
+            return main;
         }
 
         public void BuildReport(IMainData main)

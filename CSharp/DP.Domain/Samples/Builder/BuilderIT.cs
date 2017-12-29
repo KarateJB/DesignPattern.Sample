@@ -7,7 +7,8 @@ namespace DP.Domain.Samples.Builder
         public IMainData Init()
         {
             Trace.WriteLine("Initializing from BuilderIT!");
-            return new MainData();
+            var main = new MainData(){ TargetBU="IT" };
+            return main;
         }
 
         public void BuildReport(IMainData main)
