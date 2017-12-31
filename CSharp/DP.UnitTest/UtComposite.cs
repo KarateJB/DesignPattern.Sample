@@ -22,14 +22,15 @@ namespace DP.UnitTest
         [Fact]
         public void TestOrganization()
         {
-            Organization newProdDev = new NewProdDev(title: "產品管理部", head: "達斯西帝斯");
-            Organization mobileProd = new MobileProd(title: "行動裝置部", head: "達斯維達");
-            Organization appDev = new AppDev(title: "APP開發課", head: "弒星者");
-            Organization newBsDev = new NewBsDev(title: "新商機開發課", head: "白兵隊長");
+            Organization newProdDev = new NewProdDev(title: "XX銀行-產品管理部", head: "達斯西帝斯");
+            Organization mobileProd = new MobileProd(title: "XX銀行-行動裝置部", head: "達斯維達");
+            Organization appDev = new AppDev(title: "XX銀行-APP開發課", head: "弒星者");
+            Organization newBsDev = new NewBsDev(title: "XX銀行-新商機開發課", head: "白兵隊長");
 
             mobileProd.Add(appDev);
             mobileProd.Add(newBsDev);
             newProdDev.Add(mobileProd);
+            mobileProd.Remove(newBsDev.Title);
 
             this.printVision(newProdDev); //遞迴列印出所有單位的Vision
 

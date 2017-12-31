@@ -19,12 +19,14 @@ namespace DP.Domain.Samples.Composite
         public override void Add(Organization org)
         {
             this.SubOrganizations.Add(org);
+            Trace.WriteLine($"{this.Title}下新增單位：{org.Title}");
         }
 
         public override void Remove(string title)
         {
             var target = this.SubOrganizations.Where(x=>x.Title.Equals(title)).FirstOrDefault();
             this.SubOrganizations.Remove(target);
+            Trace.WriteLine($"{this.Title}下移除單位：{title}");            
         }
 
         public override void PrintVision()

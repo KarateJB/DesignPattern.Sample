@@ -16,6 +16,8 @@ class Organization(ABC):
 
 
 class NewProdDev(Organization):
+    """開發管理部
+    """
     
     def __init__(self, title="",head=""):
         self.title = title
@@ -40,6 +42,8 @@ class NewProdDev(Organization):
 
         
 class MobileProd(NewProdDev):
+    """行動裝置部
+    """
     def __init__(self, title="", head=""):
         super().__init__(title, head)
         
@@ -54,6 +58,8 @@ class AppDev(NewProdDev):
         print("APP開發課Vision：不要加班!要跨年!")
 
 class NewBsDev(NewProdDev):
+    """新商機開發課
+    """
     def __init__(self, title="", head=""):
         super().__init__(title, head)
         
