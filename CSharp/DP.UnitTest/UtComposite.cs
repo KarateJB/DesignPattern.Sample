@@ -31,7 +31,7 @@ namespace DP.UnitTest
             mobileProd.Add(newBsDev);
             newProdDev.Add(mobileProd);
 
-            this.printVision(newProdDev);
+            this.printVision(newProdDev); //遞迴列印出所有單位的Vision
 
             Assert.True(true);
         }

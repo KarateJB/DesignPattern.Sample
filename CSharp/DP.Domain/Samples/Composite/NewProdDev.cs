@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace DP.Domain.Samples.Composite
 {
+    /// <summary>
+    /// 新產品開發部
+    /// </summary>
     public class NewProdDev : Organization
     {
         public NewProdDev(string title, string head)

@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace DP.Domain.Samples.Composite
 {
+    /// <summary>
+    /// 行動裝置部
+    /// </summary>
     public class MobileProd : NewProdDev
     {
         public MobileProd(string title, string head):base(title, head)
