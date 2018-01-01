@@ -6,12 +6,13 @@ namespace DP.Domain.Samples.Decorator
     {
         public string Customer { get; set; }
         public string Receiver { get; set; }
+        public string Freight { get; set; }
 
-        public decimal Price(Freight freight)
+        public decimal Price(Transport transport)
         {
             //以運送點計算(如台南NTD$5,000、新竹NTD$1,000)
             var price = 0;
-            switch (freight.Place)
+            switch (transport.Place)
             {
                 case "台南":
                     price = 5000;

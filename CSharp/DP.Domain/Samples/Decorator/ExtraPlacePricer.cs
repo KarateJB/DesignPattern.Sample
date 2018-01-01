@@ -12,9 +12,9 @@ namespace DP.Domain.Samples.Decorator
         {
         }
 
-        public override decimal Price(Freight freight)
+        public override decimal Price(Transport transport)
         {
-            var defaultPrice = this.defaultPricer.Price(freight);
+            var defaultPrice = this.defaultPricer.Price(transport);
             var servicePrice = defaultPrice * (decimal)0.1;
             var totalPrice = defaultPrice + Math.Floor(servicePrice);
             Trace.WriteLine($"加點服務費用 = {servicePrice}，總費用={totalPrice}");

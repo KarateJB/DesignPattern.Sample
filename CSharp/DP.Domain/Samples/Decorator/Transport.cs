@@ -1,6 +1,6 @@
 namespace DP.Domain.Samples.Decorator
 {
-    public class Freight
+    public class Transport
     {
         /// <summary>
         /// 運送點
@@ -13,7 +13,7 @@ namespace DP.Domain.Samples.Decorator
         /// <summary>
         /// 是否加點
         /// </summary>
-        public bool IsDeliveToMutiPlaces { get; set; }
+        public bool IsExtraPlace { get; set; }
         /// <summary>
         /// 假日運送
         /// </summary>
