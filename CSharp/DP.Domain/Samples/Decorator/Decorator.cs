@@ -8,12 +8,12 @@ namespace DP.Domain.Samples.Decorator
 
         public abstract decimal Price(Transport transport);
 
-        protected IPricer defaultPricer { get; set; }
+        protected IPricer stdPricer { get; set; }
 
 
         public Decorator(IPricer pricer)
         {
-            this.defaultPricer = pricer;
+            this.stdPricer = pricer;
             this.Customer = pricer.Customer;
             this.Receiver = pricer.Receiver;
         }

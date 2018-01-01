@@ -14,7 +14,7 @@ namespace DP.Domain.Samples.Decorator
 
         public override decimal Price(Transport transport)
         {
-            var defaultPrice = this.defaultPricer.Price(transport);
+            var defaultPrice = this.stdPricer.Price(transport);
             var servicePrice = transport.DelayHours * 500;
             var totalPrice = defaultPrice + (decimal)servicePrice;
             Trace.WriteLine($"延遲費用 = {servicePrice}，總費用={totalPrice}");

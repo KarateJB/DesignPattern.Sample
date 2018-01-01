@@ -14,7 +14,7 @@ namespace DP.Domain.Samples.Decorator
 
         public override decimal Price(Transport transport)
         {
-            var defaultPrice = this.defaultPricer.Price(transport);
+            var defaultPrice = this.stdPricer.Price(transport);
             var servicePrice = defaultPrice * (decimal)0.2;
             var totalPrice = defaultPrice + Math.Floor(servicePrice);
             Trace.WriteLine($"假日運送服務費用 = {servicePrice}，總費用={totalPrice}");
