@@ -22,8 +22,5 @@ namespace DP.Domain.Samples.Decorator
         /// 延誤時數
         /// </summary>
         public int DelayHours { get; set; } = 0;
-        
-        
-        
     }
 }

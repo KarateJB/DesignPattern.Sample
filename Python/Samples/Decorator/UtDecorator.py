@@ -38,8 +38,8 @@ class UtFacade(unittest.TestCase):
 
     def test_scenario2(self):
         """
-        標準運費：以里程計
-        其他費用：加點和延遲費
+        標準運費：以地點計
+        其他費用：加點和假日運送
         """
 
         transport = Transport(

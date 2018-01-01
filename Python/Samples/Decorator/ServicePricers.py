@@ -19,6 +19,8 @@ class Decorator(ABC):
 
 
 class ExtraPlacePricer(Decorator):
+    """加點服務計費
+    """
     def __init__(self, stdPricer=Pricer):
         super().__init__(stdPricer)
 
@@ -31,6 +33,8 @@ class ExtraPlacePricer(Decorator):
         return totalPrice
 
 class HolidayPricer(Decorator):
+    """假日運送計費
+    """
     def __init__(self, stdPricer=Pricer):
         super().__init__(stdPricer)
 
@@ -43,6 +47,8 @@ class HolidayPricer(Decorator):
         return totalPrice
 
 class DelayPricer(Decorator):
+    """延遲計費
+    """
     def __init__(self, stdPricer=Pricer):
         super().__init__(stdPricer)
 

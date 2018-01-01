@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from Models import Transport
 
-
 class Pricer(ABC):
     def __init__(self, customer="", receiver="", freight=""):
         self.customer = customer
