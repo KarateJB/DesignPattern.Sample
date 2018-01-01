@@ -5,9 +5,11 @@ from Models import Transport
 from StdPricers import Pricer
 
 
-class Decorator(ABC, Pricer):
-    def __init__(self, customer="", receiver="", freight="", stdPricer=Pricer):
-        super().__init__(customer, receiver, freight)
+class Decorator(ABC):
+    def __init__(self, stdPricer=Pricer):
+        self.customer = stdPricer.customer
+        self.receiver = stdPricer.receiver
+        self.freight = stdPricer.freight
         self.stdPricer = stdPricer
 
     @abstractmethod
@@ -17,8 +19,8 @@ class Decorator(ABC, Pricer):
 
 
 class ExtraPlacePricer(Decorator):
-    def __init__(self, customer="", receiver="", freight="", stdPricer=Pricer):
-        super().__init__(customer, receiver, freight, stdPricer)
+    def __init__(self, stdPricer=Pricer):
+        super().__init__(stdPricer)
 
     def price(self, transport=Transport):
         """Return Total Price"""
@@ -28,9 +30,9 @@ class ExtraPlacePricer(Decorator):
         print("加點服務費用 = {0}，總費用={1}".format(servicePrice,totalPrice))
         return totalPrice
 
-class ExtraPlacePricer(Decorator):
-    def __init__(self, customer="", receiver="", freight="", stdPricer=Pricer):
-        super().__init__(customer, receiver, freight, stdPricer)
+class HolidayPricer(Decorator):
+    def __init__(self, stdPricer=Pricer):
+        super().__init__(stdPricer)
 
     def price(self, transport=Transport):
         """Return Total Price"""
@@ -40,9 +42,9 @@ class ExtraPlacePricer(Decorator):
         print("假日運送服務費用 = {0}，總費用={1}".format(servicePrice,totalPrice))
         return totalPrice
 
-class ExtraPlacePricer(Decorator):
-    def __init__(self, customer="", receiver="", freight="", stdPricer=Pricer):
-        super().__init__(customer, receiver, freight, stdPricer)
+class DelayPricer(Decorator):
+    def __init__(self, stdPricer=Pricer):
+        super().__init__(stdPricer)
 
     def price(self, transport=Transport):
         """Return Total Price"""

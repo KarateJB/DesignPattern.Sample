@@ -45,8 +45,6 @@ namespace DP.UnitTest
             };
 
             var extraPlacePricer = new ExtraPlacePricer(stdPricer);
-            extraPlacePricer.Price(transport);
-
             var delayPricer = new DelayPricer(extraPlacePricer);
             var actual = delayPricer.Price(transport);
 
@@ -80,8 +78,6 @@ namespace DP.UnitTest
             };
 
             var extraPlacePricer = new ExtraPlacePricer(stdPricer);
-            extraPlacePricer.Price(transport);
-
             var holidayPricer = new HolidayPricer(extraPlacePricer);
             var actual = holidayPricer.Price(transport);
 
