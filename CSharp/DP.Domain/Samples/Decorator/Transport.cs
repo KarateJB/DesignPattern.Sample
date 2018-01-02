@@ -13,7 +13,7 @@ namespace DP.Domain.Samples.Decorator
         /// <summary>
         /// 是否加點
         /// </summary>
-        public bool IsExtraPlace { get; set; }
+        public int ExtraPlaceCnt { get; set; }
         /// <summary>
         /// 假日運送
         /// </summary>
