@@ -11,7 +11,7 @@ namespace DP.Domain.Samples.Decorator
         /// </summary>
         public int Miles { get; set; }
         /// <summary>
-        /// 是否加點
+        /// 加點數
         /// </summary>
         public int ExtraPlaceCnt { get; set; }
         /// <summary>

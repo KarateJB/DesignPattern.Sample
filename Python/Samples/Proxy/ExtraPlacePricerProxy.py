@@ -32,6 +32,7 @@ class ExtraPlacePricerProxy(Pricer):
             totalPrice = self.extraPlacePricer.price(transport)
             servicePrice = Decimal(totalPrice * 0.2 * exceedMaxExtraPlaces)
             totalPrice += servicePrice
+            
 
         print("加點(超過兩運送點)服務費用 = {0}，總費用={1}".format(servicePrice, totalPrice))
         return totalPrice

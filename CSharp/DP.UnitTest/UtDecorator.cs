@@ -44,8 +44,8 @@ namespace DP.UnitTest
                 Freight = "死星建造圖"
             };
 
-            var extraPlacePricer = new ExtraPlacePricer(stdPricer);
-            var delayPricer = new DelayPricer(extraPlacePricer);
+            IPricer extraPlacePricer = new ExtraPlacePricer(stdPricer);
+            IPricer delayPricer = new DelayPricer(extraPlacePricer);
             var actual = delayPricer.Price(transport);
 
             var expected = 200 * 30 + 200 * 30 * 0.1 + 3 * 500;
@@ -77,8 +77,8 @@ namespace DP.UnitTest
                 Freight = "藍色光劍"
             };
 
-            var extraPlacePricer = new ExtraPlacePricer(stdPricer);
-            var holidayPricer = new HolidayPricer(extraPlacePricer);
+            IPricer extraPlacePricer = new ExtraPlacePricer(stdPricer);
+            IPricer holidayPricer = new HolidayPricer(extraPlacePricer);
             var actual = holidayPricer.Price(transport);
 
             var expected = 1000 + (1000 * 0.1) + (1000 + 1000*0.1)*0.2;
