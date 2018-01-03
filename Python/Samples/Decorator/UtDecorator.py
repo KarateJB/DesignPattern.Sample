@@ -4,7 +4,7 @@ from StdPricers import MilePricer, PlacePricer
 from ServicePricers import Decorator, ExtraPlacePricer, HolidayPricer, DelayPricer
 
 
-class UtFacade(unittest.TestCase):
+class UtProxy(unittest.TestCase):
 
     def test_scenario1(self):
         """
@@ -15,7 +15,7 @@ class UtFacade(unittest.TestCase):
         transport = Transport(
             miles=200,
             place="台南",
-            isExtraPlace=True,
+            extraPlaceCnt=1,
             isHoliday=False,
             delayHours=3
         )
@@ -45,7 +45,7 @@ class UtFacade(unittest.TestCase):
         transport = Transport(
             miles=50,
             place="新竹",
-            isExtraPlace=True,
+            extraPlaceCnt=1,
             isHoliday=True,
             delayHours=0
         )

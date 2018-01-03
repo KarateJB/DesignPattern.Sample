@@ -1,41 +1,43 @@
+using System.Diagnostics;
 using DP.Domain.Samples.Decorator;
 
 namespace DP.Domain.Samples.Proxy
 {
     public class ExtraPlacePricerProxy : IPricer
     {
-        public string Customer {get;set;}
-        public string Receiver {get;set;}
-        public string Freight {get;set;}
+        public string Customer { get; set; }
+        public string Receiver { get; set; }
+        public string Freight { get; set; }
 
+        private readonly int MAX_EXTRA_PLACES = 2;
         private IPricer _extraPlacePricer = null;
 
         public ExtraPlacePricerProxy(IPricer pricer)
         {
             //The constructor's input parameter, pricer, is used for initialize a ExtraPlacePricer
 
-            this._extraPlacePricer = new ExtraPlacePricer(pricer);            
+            this._extraPlacePricer = new ExtraPlacePricer(pricer);
         }
         public decimal Price(Transport transport)
         {
-            int defaultRateMax = 2;
             decimal totalPrice = 0;
-            if(transport.ExtraPlaceCnt<=defaultRateMax)
+            decimal servicePrice =0;
+            var exceedMaxExtraPlaces = 0;
+            
+            if (transport.ExtraPlaceCnt <= MAX_EXTRA_PLACES)
             {
-                this._extraPlacePricer.Price(transport);
+                totalPrice = this._extraPlacePricer.Price(transport);
             }
             else
             {
-                var actualExtraPlaceCnt = transport.ExtraPlaceCnt;
-                transport.ExtraPlaceCnt = defaultRateMax;
+                exceedMaxExtraPlaces = transport.ExtraPlaceCnt - MAX_EXTRA_PLACES;//計算超過的加點
+                transport.ExtraPlaceCnt = MAX_EXTRA_PLACES;
                 totalPrice = this._extraPlacePricer.Price(transport);
-                totalPrice = defaultPrice * (decimal)0.2;
-                var overPrice = defaultPrice + Math.Floor(servicePrice);
+                servicePrice = totalPrice * (decimal)0.2 * exceedMaxExtraPlaces; 
+                totalPrice += servicePrice;
+            }
 
-
-            }            
-            
-            Trace.WriteLine($"加點服務費用 = {servicePrice}，總費用={totalPrice}");
+            Trace.WriteLine($"加點(超過兩運送點)服務費用 = {servicePrice}，總費用={totalPrice}");
             return totalPrice;
         }
     }

@@ -32,7 +32,7 @@ namespace DP.UnitTest
             {
                 Miles = 200,
                 Place = "台南",
-                IsExtraPlace = true,
+                ExtraPlaceCnt = 1,
                 IsHoliday = false,
                 DelayHours = 3
             };
@@ -58,14 +58,14 @@ namespace DP.UnitTest
         {
             /*
              * 標準運費：以地點計
-             * 其他費用：加點和假日運送
+             * 其他費用：加點 2 和假日運送
              */
 
             var transport = new Transport
             {
                 Miles = 50,
                 Place = "新竹",
-                IsExtraPlace = true,
+                ExtraPlaceCnt = 2,
                 IsHoliday = true,
                 DelayHours = 0
             };
