@@ -25,7 +25,7 @@ namespace DP.Domain.Samples.Template
 
         protected override void CheckTriggers()
         {
-            Trace.WriteLine("TRF: No trigger");
+            Trace.WriteLine("TRF: Check Trigger!");
         }
     }
-}
+}s
