@@ -50,6 +50,18 @@ class UtMediator(unittest.TestCase):
         print("{0} 權重計分結果={1}".format(option.prod, actualLoanScore))
 
         self.assertEqual(actualLoanScore,  expectedLoanScore)
+    
+    def test_average_score(self):
+        expectedLoanScore = ((OptionColleague()).score() +(CreditColleague()).score() + (LoanColleague()).score())/3
+
+        mediator = MediatorAverage()
+        loan = LoanColleague()
+        loan.mediator = mediator
+        actualLoanScore = loan.mediator.score()
+
+        print("{0} 平均計分結果={1}".format(loan.prod, actualLoanScore))
+        self.assertEqual(actualLoanScore,  expectedLoanScore)
+
 
 if __name__ == '__main__':
     unittest.main()

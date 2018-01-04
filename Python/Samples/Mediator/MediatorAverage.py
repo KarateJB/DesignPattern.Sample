@@ -13,6 +13,6 @@ class MediatorAverage(Mediator):
     def score(self):
         scoreOption = self.option.score()
         scoreCredit = self.credit.score()
-        scoreLoan = self.loan.Score()
+        scoreLoan = self.loan.score()
 
         return (scoreOption + scoreCredit + scoreLoan) / 3
