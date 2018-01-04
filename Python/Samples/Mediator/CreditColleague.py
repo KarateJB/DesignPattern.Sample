@@ -2,7 +2,8 @@ from Colleague import Colleague
 from Mediator import Mediator
 
 class CreditColleague(Colleague):
-
+    """信貸評分模型"""
+    
     _mediator = None
 
     def __init__(self):

@@ -2,7 +2,8 @@ from Colleague import Colleague
 from Mediator import Mediator
 
 class OptionColleague(Colleague):
-
+    """選擇權評分模型"""
+    
     _mediator = None
 
     def __init__(self):
