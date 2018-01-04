@@ -28,4 +28,4 @@ namespace DP.Domain.Samples.Template
             Trace.WriteLine("TRF: Check Trigger!");
         }
     }
-}s
+}
