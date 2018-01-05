@@ -42,7 +42,7 @@ namespace DP.UnitTest
             //儲存備忘
             caretaker.Add("Hachi的新年新希望v2" , memento);
 
-            //有新公司找Hachi過去，Hachi準備提離職，老闆再次約談並同意先前條件
+            //有新公司找Hachi過去，Hachi準備提離職，老闆趕緊同意先前條件
             //Hachi調出之前該單的備忘回存
             var mementoOld = caretaker.Get("Hachi的新年新希望");
             originator.RestoreMemento(mementoOld);

@@ -1,6 +1,7 @@
 import uuid
+import copy
 from abc import ABC, abstractmethod
-from Mementos import Memento
+from Mementos import Memento, EflowMemento
 
 class Originator(ABC):
     @abstractmethod
@@ -11,15 +12,15 @@ class Originator(ABC):
     def restoreMemento(self, memento= Memento):
         pass
 
-class Efloworiginator(Originator):
+class EflowOriginator(Originator):
     def __init__(self):
         self.eflow = None
     
-    def createMemento():
-        uuid = str(uuid.uuid4())
-        memento = EflowMemento(uuid, copy.deepcopy(self.eflow))
+    def createMemento(self):
+        uid = str(uuid.uuid4())
+        memento = EflowMemento(uid, copy.deepcopy(self.eflow))
         return memento
 
-    def restoreMemento(memento=Memento):
-        self.eflow = memento
+    def restoreMemento(self,memento=Memento):
+        self.eflow = memento.eflow
         
