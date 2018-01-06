@@ -4,14 +4,18 @@ namespace DP.Domain.Samples.State
 {
     public class StateWorking : State
     {
-        public override void Action()
+        public override void Action(Context context)
         {
-            Trace.WriteLine("Working on the requirement, and send email to Development team!");
-        }
+            //Do something
 
-        protected override void setNewState(StateEnum stateenum)
-        {
-            throw new System.NotImplementedException();
+            //Set next state
+            context.CurrentState = new StateTesting();
+            Trace.WriteLine("The requirement is completed, send email to users!");
         }
+        
+        public override string ToString()
+        {
+            return "Working(進行中)";
+        } 
     }
 }

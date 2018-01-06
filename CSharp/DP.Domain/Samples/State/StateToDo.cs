@@ -4,14 +4,18 @@ namespace DP.Domain.Samples.State
 {
     public class StateToDo : State
     {
-        public override void Action()
+        public override void Action(Context context)
         {
-            Trace.WriteLine("List the requirement on TODO list, and send email to IT manager.");
-        }
+            //Do something
 
-        protected override void setNewState(StateEnum stateenum)
-        {
-            throw new System.NotImplementedException();
+            //Set next state
+            context.CurrentState = new StateWorking();
+            Trace.WriteLine("The requirement is on TODO list, send email to IT manager.");
         }
+        
+        public override string ToString()
+        {
+            return "TODO(待做事項)";
+        } 
     }
 }

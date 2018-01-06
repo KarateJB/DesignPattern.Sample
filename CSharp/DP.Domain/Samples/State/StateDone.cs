@@ -4,14 +4,18 @@ namespace DP.Domain.Samples.State
 {
     public class StateDone : State
     {
-        public override void Action()
+        public override void Action(Context context)
         {
-            Trace.WriteLine("Complete the requirement , and send email to all stakeholders!");
+            //Do something
+            
+            //No next state
+            context.CurrentState = null;
+            Trace.WriteLine("Close the requirement, send email to all stakeholders!");
         }
-
-        protected override void setNewState(StateEnum stateenum)
+        
+        public override string ToString()
         {
-            throw new System.NotImplementedException();
-        }
+            return "Done(已完成)";
+        } 
     }
 }
