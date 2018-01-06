@@ -6,6 +6,7 @@ class State(ABC):
     def action(self,context=Context):
         pass
 
+
 class StateToDo(State):
     def __str__(self):
         return "TODO(待做事項)"
@@ -42,8 +43,7 @@ class StateTesting(State):
         # Set next state
         context.currentState = StateDone()
         print("Test ok, send email to operation team!");
-
-
+    
 class StateDone(State):
     def __str__(self):
         return "Done(已完成)"
