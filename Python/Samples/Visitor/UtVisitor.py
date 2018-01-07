@@ -8,19 +8,20 @@ from ObjectStructure import ObjectStructure
 class UtVisitor(unittest.TestCase):
 
     _shopcart = None
+
     def __init__(self, *args, **kwargs):
         super(UtVisitor, self).__init__(*args, **kwargs)
         self._shopcart = [
             Elements.Product(productType=Elements.ProductTypeEnum.Book,
-                    name="設計模式的解析與活用", unitPrice=480, amount=20),
+                             name="設計模式的解析與活用", unitPrice=480, amount=20),
             Elements.Product(productType=Elements.ProductTypeEnum.Book,
-                    name="使用者故事對照", unitPrice=580, amount=5),
+                             name="使用者故事對照", unitPrice=580, amount=5),
             Elements.Product(productType=Elements.ProductTypeEnum.Living,
-                    name="吸塵器", unitPrice=2000, amount=2),
+                             name="吸塵器", unitPrice=2000, amount=2),
             Elements.Product(productType=Elements.ProductTypeEnum.Living,
-                    name="毛巾", unitPrice=50, amount=10),
+                             name="毛巾", unitPrice=50, amount=10),
             Elements.Product(productType=Elements.ProductTypeEnum.Electronic,
-                    name="Surface Pro", unitPrice=50000, amount=2)
+                             name="Surface Pro", unitPrice=50000, amount=2)
         ]
 
     def test_visitorDiscount4Amount(self):
@@ -41,6 +42,31 @@ class UtVisitor(unittest.TestCase):
 
         for item in checkout.elements:
             actual = actual + item.totalPrice
+
+        self.assertEqual(actual, expected)
+
+    def test_visitorDiscount4TotalPrice(self):
+        expected = Decimal(self._shopcart[2].unitPrice * self._shopcart[2].amount * 0.9) + Decimal(
+            self._shopcart[3].unitPrice * self._shopcart[3].amount)
+        actual = 0
+
+        checkout = ObjectStructure()
+
+        # Attach the elements into ObjectStructure
+        targetProds = [
+            x for x in self._shopcart if x.productType == Elements.ProductTypeEnum.Living]
+        for item in targetProds:
+            checkout.attach(item)
+
+        # Accept all the elements and execute the strategy from certain Visitor
+        checkout.accept(VisitorDiscount4TotalPrice())
+
+        for item in checkout.elements:
+            actual = actual + item.totalPrice
+
+
+        print('expected=' + str(expected))
+        print('actual=' + str(actual))
 
         self.assertEqual(actual, expected)
 

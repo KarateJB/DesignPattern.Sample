@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from enum import Enum
-# import Visitors
+from decimal import Decimal
 
 class ProductTypeEnum(Enum):
     Book = 1,  # 書
@@ -12,9 +12,9 @@ class Element(ABC):
     def __init__(self, productType=ProductTypeEnum, name="", unitPrice=0, amount=0):
         self.productType = productType
         self.name = name
-        self.unitPrice = unitPrice
+        self.unitPrice = Decimal(unitPrice)
         self.amount = amount
-        self.totalPrice=0
+        self.totalPrice=Decimal(0)
 
     @abstractmethod
     def accept(self, visitor):
