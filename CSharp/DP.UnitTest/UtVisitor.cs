@@ -12,13 +12,13 @@ namespace DP.UnitTest
     public class UtVisitor
     {
         private readonly ITestOutputHelper _output;
-        private List<IElement> Shopcart = null;
+        private List<IElement> _shopcart = null;
 
         public UtVisitor(ITestOutputHelper output)
         {
             this._output = output;
             System.Diagnostics.Trace.Listeners.Add(new XunitTraceListener(this._output));
-            this.Shopcart = new List<IElement>(){
+            this._shopcart = new List<IElement>(){
                 new Product { ProductType=ProductTypeEnum.Book, Name="設計模式的解析與活用", UnitPrice=480, Amount=20 },
                 new Product { ProductType=ProductTypeEnum.Book, Name="使用者故事對照", UnitPrice=580, Amount=5 },
                 new Product { ProductType=ProductTypeEnum.Living, Name="吸塵器", UnitPrice=2000, Amount=2 },
@@ -31,14 +31,14 @@ namespace DP.UnitTest
         public void TestVisitorDiscount4Amount()
         {
             decimal expected = 
-                this.Shopcart[0].UnitPrice*this.Shopcart[0].Amount*0.8M +
-                this.Shopcart[1].UnitPrice*this.Shopcart[1].Amount;
+                this._shopcart[0].UnitPrice*this._shopcart[0].Amount*0.8M +
+                this._shopcart[1].UnitPrice*this._shopcart[1].Amount;
             decimal actual = 0;
 
             IObjectStructure checkout = new ObjectStructure();
 
             //Attach the elements into ObjectStructure
-            this.Shopcart.Where(item=>item.ProductType.Equals(ProductTypeEnum.Book)).ToList().ForEach(item => {
+            this._shopcart.Where(item=>item.ProductType.Equals(ProductTypeEnum.Book)).ToList().ForEach(item => {
                 checkout.Attach(item);
             });
             
@@ -53,14 +53,14 @@ namespace DP.UnitTest
         public void TestVisitorDiscount4TotalPrice()
         {
             decimal expected = 
-                this.Shopcart[2].UnitPrice*this.Shopcart[2].Amount*0.9M +
-                this.Shopcart[3].UnitPrice*this.Shopcart[3].Amount;
+                this._shopcart[2].UnitPrice*this._shopcart[2].Amount*0.9M +
+                this._shopcart[3].UnitPrice*this._shopcart[3].Amount;
             decimal actual = 0;
 
             IObjectStructure checkout = new ObjectStructure();
 
             //Attach the elements into ObjectStructure
-            this.Shopcart.Where(item=>item.ProductType.Equals(ProductTypeEnum.Living)).ToList().ForEach(item => {
+            this._shopcart.Where(item=>item.ProductType.Equals(ProductTypeEnum.Living)).ToList().ForEach(item => {
                 checkout.Attach(item);
             });
             
