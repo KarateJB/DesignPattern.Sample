@@ -2,7 +2,10 @@ using System.Diagnostics;
 
 namespace DP.Domain.Samples.Visitor
 {
-    public class VisitorDiscount42Count : Visitor
+    /// <summary>
+    /// 該項商品數量10以上八折優惠
+    /// </summary>
+    public class VisitorDiscount4Count : Visitor
     {
         public override void Visit(IElement elm)
         {

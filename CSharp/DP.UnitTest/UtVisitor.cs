@@ -43,7 +43,7 @@ namespace DP.UnitTest
             });
             
             //Accept all the elements and execute the strategy from certain Visitor 
-            checkout.Accept(new VisitorDiscount42Count());
+            checkout.Accept(new VisitorDiscount4Count());
 
             actual = checkout.Elements.Sum(x=>x.TotalPrice);
             Assert.Equal(expected, actual);

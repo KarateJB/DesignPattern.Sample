@@ -2,6 +2,9 @@ using System.Diagnostics;
 
 namespace DP.Domain.Samples.Visitor
 {
+    /// <summary>
+    /// 該項商品總價$1,000以上九折優惠
+    /// </summary>
     public class VisitorDiscount4TotalPrice : Visitor
     {
         public override void Visit(IElement elm)
