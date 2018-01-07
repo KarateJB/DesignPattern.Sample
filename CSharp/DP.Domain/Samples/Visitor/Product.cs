@@ -6,7 +6,7 @@ namespace DP.Domain.Samples.Visitor
         public string Name {get;set;} 
         public decimal UnitPrice { get;set; }
         public int Amount { get; set; }
-        decimal TotalPrice {get;set;}
+        public decimal TotalPrice {get;set;}
         
 
         public void Accept(Visitor visitor)

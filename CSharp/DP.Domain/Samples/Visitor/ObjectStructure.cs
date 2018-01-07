@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace DP.Domain.Samples.Visitor
 {
-    public class ShopCart : IObjectStructure
+    public class ObjectStructure : IObjectStructure
     {
         public List<IElement> Elements { get; set; }
 
-        public ShopCart()
+        public ObjectStructure()
         {
             this.Elements = new List<IElement>();
         }
@@ -17,6 +17,10 @@ namespace DP.Domain.Samples.Visitor
         public void Detach(IElement element)
         {
             this.Elements.Remove(element);
+        }
+        public void Clear()
+        {
+            this.Elements.Clear();
         }
         public void Accept(Visitor visitor)
         {

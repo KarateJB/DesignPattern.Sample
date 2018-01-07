@@ -7,6 +7,7 @@ namespace DP.Domain.Samples.Visitor
         List<IElement> Elements { get; set; }
         void Attach(IElement element);
         void Detach(IElement element);
+        void Clear();
         void Accept(Visitor visitor);
     }
 }
