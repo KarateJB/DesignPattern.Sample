@@ -23,8 +23,6 @@ namespace DP.UnitTest
             var expectedFinalState = "Done(已完成)";
             var actualFinalState = string.Empty;
 
-            var hasDefect = true;
-
             var context = new Context();
             while (context.CurrentState != null)
             {
@@ -32,7 +30,6 @@ namespace DP.UnitTest
                 Trace.WriteLine($"需求目前狀態={actualFinalState}");
                 context.Action();
             }
-
 
             Assert.Equal(expectedFinalState, actualFinalState);
         }

@@ -8,10 +8,6 @@ namespace DP.Domain.Samples.Mediator
         public IColleague Credit { get; set; }
         public IColleague Loan { get; set; }
 
-        private decimal _weightOption = 0;
-        private decimal _weightCredit = 0;
-        private decimal _weightLoan = 0;
-
         public MediatorAverage()
         {
             this.Option = new OptionColleague();
