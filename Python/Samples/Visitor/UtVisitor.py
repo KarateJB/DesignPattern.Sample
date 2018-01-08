@@ -1,5 +1,5 @@
 import unittest
-from decimal import Decimal
+from decimal import Decimal,getcontext
 import Elements
 from Visitors import VisitorDiscount4Count, VisitorDiscount4TotalPrice
 from ObjectStructure import ObjectStructure
@@ -25,8 +25,9 @@ class UtVisitor(unittest.TestCase):
         ]
 
     def test_visitorDiscount4Amount(self):
-        expected = Decimal(self._shopcart[0].unitPrice * self._shopcart[0].amount * 0.8) + Decimal(
-            self._shopcart[1].unitPrice * self._shopcart[1].amount)
+        # getcontext().prec = 2
+        
+        expected = self._shopcart[0].unitPrice * Decimal(self._shopcart[0].amount) * Decimal(0.8) + self._shopcart[1].unitPrice * Decimal(self._shopcart[1].amount)
         actual = 0
 
         checkout = ObjectStructure()
@@ -46,8 +47,10 @@ class UtVisitor(unittest.TestCase):
         self.assertEqual(actual, expected)
 
     def test_visitorDiscount4TotalPrice(self):
-        expected = Decimal(self._shopcart[2].unitPrice * self._shopcart[2].amount * 0.9) + Decimal(
-            self._shopcart[3].unitPrice * self._shopcart[3].amount)
+        # getcontext().prec = 2
+
+        # expected = float(self._shopcart[2].unitPrice) * float(self._shopcart[2].amount) * float(0.9) + float(self._shopcart[3].unitPrice) * float(self._shopcart[3].amount)
+        expected = self._shopcart[2].unitPrice * Decimal(self._shopcart[2].amount) * Decimal(0.9) + self._shopcart[3].unitPrice * Decimal(self._shopcart[3].amount)        
         actual = 0
 
         checkout = ObjectStructure()
@@ -63,10 +66,6 @@ class UtVisitor(unittest.TestCase):
 
         for item in checkout.elements:
             actual = actual + item.totalPrice
-
-
-        print('expected=' + str(expected))
-        print('actual=' + str(actual))
 
         self.assertEqual(actual, expected)
 
