@@ -32,7 +32,7 @@ class UtVisitor(unittest.TestCase):
 
     def test_iterator(self):
 
-        expected = self._shopcart[0].unitPrice * Decimal(self._shopcart[0].amount) * Decimal(0.8) + self._shopcart[1].unitPrice * Decimal(self._shopcart[1].amount)
+        expected = self._shopcart[0].unitPrice * Decimal(self._shopcart[0].amount) * Decimal(0.8) + self._shopcart[2].unitPrice * Decimal(self._shopcart[2].amount)
         actual = 0
 
 
@@ -40,26 +40,18 @@ class UtVisitor(unittest.TestCase):
         for prod in self._shopcart:
             aggregate.add(prod)
 
-        # Use IAggregate to iterate through the collection
-        for prod in aggregate.getAll():
-            print("商品名稱:{0},單價:{1},數量：{2}".format(prod.name, prod.unitPrice, prod.amount))
-            
+        checkout = ObjectStructure()
+        # Attach the elements into ObjectStructure
+        for item in aggregate.getAll():
+            checkout.attach(item)
 
-        # checkout = ObjectStructure()
+        # Accept all the elements and execute the strategy from certain Visitor
+        checkout.accept(VisitorDiscount4Count())
 
-        # # Attach the elements into ObjectStructure
-        # targetProds = [
-        #     x for x in self._shopcart if x.productType == Elements.ProductTypeEnum.Book]
-        # for item in targetProds:
-        #     checkout.attach(item)
+        for item in checkout.elements:
+            actual = actual + item.totalPrice
 
-        # # Accept all the elements and execute the strategy from certain Visitor
-        # checkout.accept(VisitorDiscount4Count())
-
-        # for item in checkout.elements:
-        #     actual = actual + item.totalPrice
-
-        # self.assertEqual(actual, expected)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
