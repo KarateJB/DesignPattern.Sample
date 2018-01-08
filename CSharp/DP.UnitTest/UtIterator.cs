@@ -21,18 +21,19 @@ namespace DP.UnitTest
         [Fact] 
         public void TestIterator()
         {
-            Aggregate aggregate = new ConcreteAggregate();
+            Aggregate aggregate = new ConcreteAggregate(ProductTypeEnum.Book);
             aggregate.Add(new Product { ProductType=ProductTypeEnum.Book, Name="設計模式的解析與活用", UnitPrice=480, Amount=20 });
             aggregate.Add(new Product { ProductType=ProductTypeEnum.Book, Name="使用者故事對照", UnitPrice=580, Amount=5 });
             aggregate.Add(new Product { ProductType=ProductTypeEnum.Living, Name="吸塵器", UnitPrice=2000, Amount=2 });
             aggregate.Add(new Product { ProductType=ProductTypeEnum.Living, Name="毛巾", UnitPrice=50, Amount=10 });
+            aggregate.Add(new Product { ProductType=ProductTypeEnum.Living, Name="清潔劑", UnitPrice=100, Amount=3 });
             aggregate.Add(new Product { ProductType=ProductTypeEnum.Electronic, Name="Surface Pro", UnitPrice=50000, Amount=2 });
 
             //Use IAggregate to iterate through the collection
             foreach (var prod in aggregate.GetAll())
                 Trace.WriteLine($"商品名稱:{prod.Name},單價:{prod.UnitPrice},數量：{prod.Amount}");
 
-            Assert.Equal(5, aggregate.GetAll().Count);
+            Assert.Equal(2, aggregate.GetAll().Count);
         }
     }
 }

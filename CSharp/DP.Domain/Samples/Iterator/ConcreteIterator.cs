@@ -10,6 +10,7 @@ namespace DP.Domain.Samples.Iterator
     public class ConcreteIterator : Iterator
     {
         private Aggregate _aggregate = null;
+        private ProductTypeEnum _prodType;
         private int _pointer = 0;
         private List<IElement> _collection = new List<IElement>();
 
@@ -24,22 +25,31 @@ namespace DP.Domain.Samples.Iterator
             }
         }
 
-        public ConcreteIterator(Aggregate aggregate)
+        public ConcreteIterator(Aggregate aggregate, ProductTypeEnum prodType)
         {
             this._aggregate = aggregate;
+            this._prodType = prodType;
         }
 
         public override IElement Current()
         {
-            Trace.WriteLine($"Get current for {this._pointer}");
-            Trace.WriteLine($"List length = {this._collection.Count}");
-            
             if (this._pointer >= this._collection.Count)
             {
+                Trace.WriteLine($"OutOfRange ointer={this._pointer}");
                 throw new IndexOutOfRangeException();
             }
             else
             {
+                var elm = this._collection[this._pointer];
+                while (!elm.ProductType.Equals(this._prodType))
+                {
+                    this._pointer++;
+                    if (this._pointer >= this._collection.Count)
+                        return null;
+                    else
+                        elm = this._collection[this._pointer];
+                }
+
                 return this._collection[this._pointer];
             }
         }

@@ -8,9 +8,9 @@ namespace DP.Domain.Samples.Iterator
     {
         private Iterator _iterator;
 
-        public ConcreteAggregate()
+        public ConcreteAggregate(ProductTypeEnum prodType)
         {
-            this._iterator = new ConcreteIterator(this);
+            this._iterator = new ConcreteIterator(this, prodType);
         }
         public override void Add(IElement elm)
         {
@@ -26,12 +26,12 @@ namespace DP.Domain.Samples.Iterator
         {
             List<IElement> list = new List<IElement>();
             list.Add(this._iterator.First());
-            
-            while(!this._iterator.IsFinal)
-            {
-                Trace.WriteLine($"IsFinal = {this._iterator.IsFinal}");
 
-                list.Add(this._iterator.Next());
+            while (!this._iterator.IsFinal)
+            {
+                var elm = this._iterator.Next();
+                if (elm != null)
+                    list.Add(elm);
             }
             return list;
         }
