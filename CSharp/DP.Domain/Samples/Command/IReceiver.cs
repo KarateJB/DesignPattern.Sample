@@ -11,7 +11,7 @@ namespace DP.Domain.Samples.Command
         /// </summary>
         void Fire();
         /// <summary>
-        /// 設定制高點=有利之位置...(語出歐比王)
+        /// 設定制高點=有利之位置
         /// </summary>
         void SetHighGround();
         /// <summary>
