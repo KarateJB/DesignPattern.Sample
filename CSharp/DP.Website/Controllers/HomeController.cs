@@ -21,10 +21,10 @@ namespace DP.Website.Controllers
             // Builder builder = new Builder4Skywlker();
             Builder builder = new Builder4Solo();
 
-            //Build it!
             var director = new Director(builder);
-            Home model = director.Construct();
-            return View(model);
+            //Build it!
+            Home viewModel = director.Construct();
+            return View(viewModel);
         }
 
         public IActionResult About()
