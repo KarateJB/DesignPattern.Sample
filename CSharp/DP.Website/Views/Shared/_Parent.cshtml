@@ -1,0 +1,21 @@
+@using DP.Website.Model
+@model Parent
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+    @if (Model != null)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Name)
+            </td>
+        </tr>
+    }
+</table>
+
+

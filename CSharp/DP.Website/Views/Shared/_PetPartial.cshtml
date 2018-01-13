@@ -1,0 +1,29 @@
+@using DP.Website.Model
+@model Child
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PetType)
+        </th>
+       
+    </tr>
+
+
+    @if (Model != null)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.PetType)
+            </td>
+        </tr>
+    }
+</table>
+
+
