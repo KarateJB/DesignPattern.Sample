@@ -1,0 +1,33 @@
+﻿@model DP.Website.Models.Home
+
+
+<div style="background-color:lightblue">
+    @if (Model.Parents != null)
+    {
+        for (int i = 0; i < Model.Parents.Count(); i++)
+        {
+            @Html.Partial("_ParentPartial", Model.Parents.ToList()[i])
+        }
+    }
+</div>
+
+
+<div style="background-color:lightcyan">
+    @if (Model.Children != null)
+    {
+        for (int i = 0; i < Model.Children.Count(); i++)
+        {
+            @Html.Partial("_ChildPartial", Model.Children.ToList()[i])
+        }
+    }
+</div>
+
+<div style="background-color:lightgreen">
+    @if (Model.Pets != null)
+    {
+        for (int i = 0; i < Model.Pets.Count(); i++)
+        {
+            @Html.Partial("_PetPartial", Model.Pets.ToList()[i])
+        }
+    }
+</div>

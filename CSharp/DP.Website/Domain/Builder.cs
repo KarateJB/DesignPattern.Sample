@@ -7,8 +7,8 @@ namespace DP.Website.Domain
          /// 建立物件
         abstract public Home Init();
 
-        abstract protected void CreateParent(Home home);
-        abstract protected void CreateChild(Home home);
-        abstract protected void CreatePet(Home home);
+        abstract public void BuildParent(Home home);
+        abstract public void BuildChild(Home home);
+        abstract public void BuildPet(Home home);
     }
 }

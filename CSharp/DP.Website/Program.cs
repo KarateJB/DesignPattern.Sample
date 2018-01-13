@@ -19,6 +19,7 @@ namespace DP.Website
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://localhost:4200")
                 .UseStartup<Startup>()
                 .Build();
     }
