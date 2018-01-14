@@ -1,0 +1,17 @@
+﻿<div>
+    <h1>@ViewBag.fileType</h1>
+    @using(Html.BeginForm("Index", "UPload"))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <select name="fileType">
+            <option value="1">訂單A</option>
+            <option value="2">訂單B</option>
+        </select>
+
+        <br /><br />
+        <input type="submit" value="Upload" />
+
+    }
+</div>
