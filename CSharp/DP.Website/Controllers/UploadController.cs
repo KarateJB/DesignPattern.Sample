@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DP.Website.Models;
 using DP.Website.Domain;
+using DP.Website.Domain.Strategy;
 
 namespace DP.Website.Controllers
 {
@@ -13,14 +14,35 @@ namespace DP.Website.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            FreightOrder fo = DataAccessService.Query(1);
+            return View(fo);
         }
 
         [HttpPost]
-        public IActionResult Index(string fileType)
+        public IActionResult Index(string fileType, FreightOrder fo)
         {
-            ViewBag.fileType=fileType;
-            return View();
+            ModelState.Clear();
+
+            IFoStrategy stg = null;
+            if (fileType.Equals("1"))
+            {
+                stg = new FoStrategyAppend();
+                ViewBag.Strategy = "採用策略：累加原單之數量";
+            }
+            else
+            {
+                stg = new FoStrategyReplace();
+                ViewBag.Strategy = "採用策略：覆蓋原單之數量";
+            }
+            stg.Query = DataAccessService.Query;
+            stg.Update = DataAccessService.Update;
+            updateFreightOrder(fo, stg);
+            return View(fo);
+        }
+
+        private void updateFreightOrder(FreightOrder fo, IFoStrategy stg)
+        {
+            stg.Upload(fo);
         }
 
 
