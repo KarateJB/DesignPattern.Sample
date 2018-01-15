@@ -1,17 +1,39 @@
-﻿<div>
-    <h1>@ViewBag.fileType</h1>
-    @using(Html.BeginForm("Index", "UPload"))
+﻿@model DP.Website.Models.FreightOrder
+
+<div>
+    <h2>@ViewBag.Strategy</h2>
+    <hr />
+    @using(Html.BeginForm("Index", "Upload"))
     {
         @Html.AntiForgeryToken()
 
-
-        <select name="fileType">
-            <option value="1">訂單A</option>
-            <option value="2">訂單B</option>
+        <select class="form-control" name="fileType">
+            <option value="1">託運單格式A-累加原單之數量</option>
+            <option value="2">託運單格式B-覆蓋原單之數量</option>
         </select>
-
         <br /><br />
-        <input type="submit" value="Upload" />
+        
+              <table class="table">
+                  <thead>
+                  <th>@Html.DisplayNameFor(model => model.Id)</th>
+                  <th>@Html.DisplayNameFor(model => model.Customer)</th>
+                  <th>@Html.DisplayNameFor(model => model.Product)</th>
+                  <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                  <th>@Html.DisplayNameFor(model => model.NewAmount)</th>
+                  </thead>
+                  <tbody>
+                  <td>@Html.TextBoxFor(modelItem => Model.Id, new { @class = "form-control" })</td>
+                  <td>@Html.TextBoxFor(modelItem => Model.Customer, new { @class = "form-control" })</td>
+                  <td>@Html.TextBoxFor(modelItem => Model.Product, new { @class = "form-control" })</td>
+                  <td>
+                      @Html.TextBoxFor(modelItem => Model.Amount, new { @class = "form-control" })
+                  </td>
+                  <td>
+                      @Html.TextBoxFor(modelItem => Model.NewAmount, new { @class = "form-control" })
+                  </td>
+                  </tbody>
+              </table>
 
+        <input class="form-control" type="submit" value="Upload" />
     }
 </div>
