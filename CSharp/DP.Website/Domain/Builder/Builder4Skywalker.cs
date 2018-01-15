@@ -3,7 +3,7 @@ using DP.Website.Models;
 
 namespace DP.Website.Domain
 {
-    public class Builder4Skywlker : Builder
+    public class Builder4Skywalker : Builder
     {
         public override Home Init()
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DP.Website.Models;
 using DP.Website.Domain;
+using DP.Website.Domain.State;
 
 namespace DP.Website.Controllers
 {
@@ -26,6 +27,20 @@ namespace DP.Website.Controllers
             Home viewModel = director.Construct();
             return View(viewModel);
         }
+
+        public IActionResult State()
+        {
+            // var context = new HomeContext(HomeEnum.Skywalker);
+            var context = new HomeContext(HomeEnum.Solo);
+            while (context.CurrentState!=null)
+            {
+                context.Action();
+            }
+
+            Home viewModel = context.Home;
+            return View(viewModel);
+        }
+
 
         public IActionResult About()
         {
