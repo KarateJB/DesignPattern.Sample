@@ -1,6 +1,6 @@
 import sys
 sys.path.append("../Interpreter/")
-from Models import Context
+from Interpreter_models import Context
 from Adaptee import Adaptee
 
 

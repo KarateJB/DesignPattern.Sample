@@ -1,6 +1,6 @@
 from Mementos import Memento, EflowMemento
 from Originators import Originator, EflowOriginator
-from Models import Eflow
+from Memento_models import Eflow
 
 
 class Caretaker:

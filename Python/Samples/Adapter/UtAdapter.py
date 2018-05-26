@@ -5,7 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../Interpreter/'))
 from datetime import datetime
 from Adaptee import Adaptee
 from Adapters import AdapterObj, AdapterCls
-from Models import Context, PayData, Vip, Store
+from Interpreter_models import Context, PayData, Vip, Store
 
 class UtAdapter(unittest.TestCase):
 

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from Models import Content, DataFactory
+from Cor_models import Content, DataFactory
 
 class HandlerBase(ABC):    
 

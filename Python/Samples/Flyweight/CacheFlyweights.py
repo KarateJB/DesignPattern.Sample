@@ -1,4 +1,4 @@
-from Models import Content
+from Flyweight_models import Content
 from ContentFactory import ContentFactory
 
 class CacheFlyweights:    

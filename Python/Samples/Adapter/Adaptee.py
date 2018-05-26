@@ -1,7 +1,7 @@
 import sys
 import os.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '../Interpreter/'))
-from Models import Context
+from Interpreter_models import Context
 from Expression import Expression
 from PayExpression import PayExpression
 from StoreExpression import StoreExpression

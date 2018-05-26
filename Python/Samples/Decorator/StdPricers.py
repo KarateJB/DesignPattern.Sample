@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from Models import Transport
+from Decorator_models import Transport
 
 class Pricer(ABC):
     def __init__(self, customer="", receiver="", freight=""):

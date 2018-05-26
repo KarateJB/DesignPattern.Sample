@@ -1,5 +1,5 @@
 import unittest
-from Models import Content
+from Flyweight_models import Content
 from ContentFactory import ContentFactory
 from CacheFlyweights import CacheFlyweights
 

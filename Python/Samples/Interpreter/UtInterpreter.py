@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 from Expression import Expression
-from Models import Context, PayData, Vip, Store
+from Interpreter_models import Context, PayData, Vip, Store
 from PayExpression import PayExpression
 from VipExpression import VipExpression
 from StoreExpression import StoreExpression

@@ -1,3 +1,6 @@
+import sys
+sys.path.append("../../../") 
+
 import unittest
 from BaseLogger import BaseLogger
 from DbLogger import DbLogger

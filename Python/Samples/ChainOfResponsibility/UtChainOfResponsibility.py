@@ -1,5 +1,5 @@
 import unittest
-from Models import Content, DataFactory
+from Cor_models import Content, DataFactory
 from Handlers import HandlerBase, Handler, ReceiverZh, ReceiverCn, ReceiverEn, ReceiverException
 
 

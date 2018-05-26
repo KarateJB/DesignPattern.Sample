@@ -1,5 +1,5 @@
 import unittest
-from Models import DbContext, DbEnum
+from Factory_models import DbContext, DbEnum
 from AbsDbFactory import AbsDbFactory, DataMartDbFactory, HistoryDbFactory, OnlineDbFactory
 from StcDbFactory import StcDbFactory
 
@@ -19,7 +19,7 @@ class UtFactory(unittest.TestCase):
 
         dmFactory = DataMartDbFactory()
         dmDbcontext =  dmFactory.create()
-        dmDbcontext.connect();
+        dmDbcontext.connect()
         self.assertEqual(dmDbcontext.server, DbEnum.DataMart.name)
 
 
