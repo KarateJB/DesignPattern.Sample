@@ -1,5 +1,7 @@
 # DesignPattern.Sample
 
+![](https://travis-ci.org/KarateJB/DesignPattern.Sample.svg?branch=master)
+
 Design Pattern samples in C# and Python. 
 
 1. [Introduction](https://github.com/KarateJB/eBooks/tree/master/Design%20Patterns/01.%20Introduction)
