@@ -1,11 +1,38 @@
-language: python
-python:
-  - "3.6"
-# command to install dependencies
-install:
-  # - pip install -r requirements.txt
-# command to run tests
-script:
-  # - pytest
-  - cd Python
-  - python -m unittest run_tests.py
+matrix:
+  include:
+    - language: python
+      python:
+        - "3.6"
+      # command to install dependencies
+      install:
+        # - pip install -r requirements.txt
+      # command to run tests
+      script:
+        # - pytest
+        - cd Python
+        - python -m unittest run_tests.py
+
+    - language: csharp
+      mono: none
+      dotnet: 2.0.3
+      install:
+        # - pip install -r requirements.txt
+      # command to run tests
+      script:
+        - cd CSharp
+        - dotnet restore
+        - cd DP.UnitTest
+        - dotnet test
+
+
+# language: python
+# python:
+#   - "3.6"
+# # command to install dependencies
+# install:
+#   # - pip install -r requirements.txt
+# # command to run tests
+# script:
+#   # - pytest
+#   - cd Python
+#   - python -m unittest run_tests.py
