@@ -22,8 +22,29 @@ matrix:
         - cd CSharp
         - dotnet restore
         - cd DP.UnitTest
-        - dotnet test
-
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtAdapter"        
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtBridge"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtBuilder"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtChainOfResposibility"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtCommand"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtComposite"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtDecorator"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtFacade"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtFactory"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtFlyweight"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtInterpreter"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtIterator"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtMediator"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtMemento"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtObserver"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtPrototype"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtProxy"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtSingleton"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtState"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtStrategy"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtTemplate"
+        - dotnet test --filter "FullyQualifiedName~DP.UnitTest.UtVisitor"
+        
 
 # language: python
 # python:
