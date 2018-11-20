@@ -19,7 +19,7 @@ class BuilderFI(Builder):
     def init(self):
         print("Initializing from BuilderFI!")
         main = MainData(targetBU="Financial Department")
-        return main;
+        return main
 
     def buildReport(self, main=MainData):
         print("Building Report from BuilderFI!")
@@ -38,7 +38,7 @@ class BuilderIT(Builder):
     def init(self):
         print("Initializing from BuilderIT!")
         main = MainData(targetBU="IT")
-        return main;
+        return main
 
     def buildReport(self, main=MainData):
         print("Building Report from BuilderIT!")
