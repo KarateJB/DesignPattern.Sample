@@ -6,7 +6,7 @@
     {
         for (int i = 0; i < Model.Parents.Count(); i++)
         {
-            @Html.Partial("_ParentPartial", Model.Parents.ToList()[i])
+            <partial name="_ParentPartial" model="Model.Parents.ToList()[i]" />
         }
     }
 </div>
@@ -17,7 +17,7 @@
     {
         for (int i = 0; i < Model.Children.Count(); i++)
         {
-            @Html.Partial("_ChildPartial", Model.Children.ToList()[i])
+            <partial name="_ChildPartial" model="Model.Children.ToList()[i]" />
         }
     }
 </div>
@@ -27,7 +27,7 @@
     {
         for (int i = 0; i < Model.Pets.Count(); i++)
         {
-            @Html.Partial("_PetPartial", Model.Pets.ToList()[i])
+            <partial name="_PetPartial" model="Model.Pets.ToList()[i]" />
         }
     }
 </div>
