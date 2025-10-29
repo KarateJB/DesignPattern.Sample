@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Xunit.Abstractions;
 
@@ -19,7 +20,7 @@ namespace DP.UnitTest.Utility
             {
                 this._output.WriteLine(message);
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 // Ignore if there is no active test
             }
@@ -30,7 +31,7 @@ namespace DP.UnitTest.Utility
             {
                 this._output.WriteLine(message);
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 // Ignore if there is no active test
             }
