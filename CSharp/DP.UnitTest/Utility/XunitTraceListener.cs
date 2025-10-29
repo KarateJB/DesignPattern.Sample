@@ -15,11 +15,25 @@ namespace DP.UnitTest.Utility
         }
         public override void Write(string message)
         {
-            this._output.WriteLine(message);
+            try
+            {
+                this._output.WriteLine(message);
+            }
+            catch (System.InvalidOperationException)
+            {
+                // Ignore if there is no active test
+            }
         }
         public override void WriteLine(string message)
-        { 
-            this._output.WriteLine(message);
+        {
+            try
+            {
+                this._output.WriteLine(message);
+            }
+            catch (System.InvalidOperationException)
+            {
+                // Ignore if there is no active test
+            }
         }
     }
 }
